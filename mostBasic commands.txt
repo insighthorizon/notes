@@ -1,5 +1,6 @@
 	Getting info
 man man #press / and write searched text to search in man page or info page, then hit enter and traverse results by n, p
+man -a 'command' #see all available man pages about the command (from all sections)
 info
 whatis ls #a short explanation of command purpose
 apropos browsers
