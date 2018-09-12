@@ -1,0 +1,15 @@
+#Use Emcas GUI if you can!
+
+    Shell
+M-x ansi-term # run shell in emacs GUI
+
+    Buffer management
+C+x k #kill buffer
+C+x C+f #find or create file and open it in new buffer
+C+x left/right arrow #jump between opened buffers
+
+    Window management
+C+x 2 #split selected window to two, one above other
+C+x 3 #split selected window to two, side by side
+C+x o #jump between windows
+C+x 1 #close all windows except the selected one

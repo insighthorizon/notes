@@ -1,0 +1,129 @@
+	Getting info
+man man #press / and write searched text to search in man page or info page, then hit enter and traverse results by n, p
+info
+whatis ls #a short explanation of command purpose
+apropos browsers
+cat --help
+man -k 'searched term' #searching strging in all man pages
+which bash #tells the location of the program binary executable
+which ls
+
+
+	Files and directories
+ls
+cd path
+file filename
+pwd
+mkdir
+rmdir
+rm
+cp
+mv
+touch
+chmod # file permissions
+find ./ -type -name "*.log"
+
+
+	Text
+cat sourcefile
+less sourcefile
+echo $SHELL
+
+
+	Variables
+$ - placed before a variable name to refer to its value	
+$PATH #an environment variable storing paths to programs available in bash session
+
+
+	  System
+exit
+logout
+shutdown -h now #shutdown
+shutdown -r now #reboot
+ps
+ps aux | grep 'firefox'
+top
+htop
+kill [signal] <PID> #kill a process ...process ID
+kill 9678 #normal kill
+kill -9 6978 #when normal kill doesnt work, this will make sure
+jobs
+sleep 5 #wait for 5 seconds
+Ctrl+z #makes the process stop and dropped to background
+bg #starts running the process with job number [1] in the background
+sleep 5 & #& makes the command run in background
+fg
+kill %n #kill job with number n in the jobs list
+
+
+     	Accounts
+passwd
+
+	Wildcards in arguments of commands
+* - represents zero or more characters
+? - represents a single character
+[] - represents a range of characters
+
+
+     Filters
+head
+tail
+sort
+nl
+wc
+cut
+sed #example sed -E 's/replced/replacement/g' targettext
+uniq
+tac
+grep
+
+
+	Regular expressions
+. (dot) - a single character.
+? - the preceding character matches 0 or 1 times only.
+* - the preceding character matches 0 or more times.
++ - the preceding character matches 1 or more times.
+{n} - the preceding character matches exactly n times.
+{n,m} - the preceding character matches at least n times and not more than m times.
+[agd] - the character is one of those included within the square brackets.
+[^agd] - the character is not one of those included within the square brackets.
+[c-f] - the dash within the square brackets operates as a range. In this case it means either the letters c, d, e or f.
+() - allows us to group several characters to behave as one.
+| (pipe symbol) - the logical OR operation.
+^ - matches the beginning of the line.
+$ - matches the end of the line.
+
+
+    Piping and redirection
+Every program we run on the command line automatically has three data streams connected to it.
+
+    STDIN (0) - Standard input (data fed into the program)
+    STDOUT (1) - Standard output (data printed by the program, defaults to the terminal)
+    STDERR (2) - Standard error (for error messages, also defaults to the terminal)
+>
+    Save output to a file.
+>>
+    Append output to a file.
+<
+    Read input from a file.
+2>
+    Redirect error messages.
+|
+    Send the output from one program as input to another program.
+    
+
+    Tricks
+!! #call previous command
+sudo !!
+
+-----------additional notes--------------------------------------
+	Manual sections
+Section 	Description
+1 	General commands
+2 	System calls
+3 	Library functions, covering in particular the C standard library
+4 	Special files (usually devices, those found in /dev) and drivers
+5 	File formats and conventions
+6 	Games and screensavers
+7 	Miscellanea
+8 	System administration commands and daemons
