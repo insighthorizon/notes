@@ -1,0 +1,46 @@
+	Special Variables in particular bash script which is running
+Note:	
+$0 - The name of the Bash script.
+$1 - $9 - The first 9 arguments to the Bash script. (As mentioned above.)
+$# - How many arguments were passed to the Bash script.
+$@ - All the arguments supplied to the Bash script.
+$? - The exit status of the most recently run process.
+$$ - The process ID of the current script.
+$USER - The username of the user running the script.
+$HOSTNAME - The hostname of the machine the script is running on.
+$SECONDS - The number of seconds since the script was started.
+$RANDOM - Returns a different random number each time is it referred to.
+$LINENO - Returns the current line number in the Bash script.	
+
+Command:
+env # without argument lists environment variables
+
+
+      Quotes
+Note:      
+' Single quotes will treat every character literally.
+" Double quotes will allow you to do substitution (that is include variables within the setting of the value).
+
+
+       Command Substitution
+Note:       
+take the output of a command or program (what would normally be printed to the screen) and save it as the value of a variable
+two variants (Command):
+myvar=$(ls /etc | wc -l)
+myvar=`ls /etc | wc -l`
+
+
+	  Variable scope and exporting variables
+Command:
+export var1
+Note:
+every time a new process is created (to run another script or such) then make a copy of the variable and hand it over to the new process. So although the variables will have the same name they exist in separate processes and so are unrelated to each other. Exporting variables is a one way process. The original process may pass variables over to the new process but anything that process does with the copy of the variables has no impact on the original variables.
+
+      	   Concatenation
+Command:
+echo "$var1$var2"
+Note: variable with variable
+Command:
+sed -n "$RANDOM{p}" /usr/share/dict/words
+Note: variable with string, curly braces emhasize that 'p' is separate string
+
