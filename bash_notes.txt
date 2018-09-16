@@ -43,4 +43,5 @@ Note: variable with variable
 Command:
 sed -n "$RANDOM{p}" /usr/share/dict/words
 Note: variable with string, curly braces emhasize that 'p' is separate string
+echo 1-"$RANDOM"
 
