@@ -79,40 +79,6 @@ tac
 grep
 
 
-	Regular expressions
-. (dot) - a single character.
-? - the preceding character matches 0 or 1 times only.
-* - the preceding character matches 0 or more times.
-+ - the preceding character matches 1 or more times.
-{n} - the preceding character matches exactly n times.
-{n,m} - the preceding character matches at least n times and not more than m times.
-[agd] - the character is one of those included within the square brackets.
-[^agd] - the character is not one of those included within the square brackets.
-[c-f] - the dash within the square brackets operates as a range. In this case it means either the letters c, d, e or f.
-() - allows us to group several characters to behave as one.
-| (pipe symbol) - the logical OR operation.
-^ - matches the beginning of the line.
-$ - matches the end of the line.
-
-
-    Piping and redirection
-Every program we run on the command line automatically has three data streams connected to it.
-
-    STDIN (0) - Standard input (data fed into the program)
-    STDOUT (1) - Standard output (data printed by the program, defaults to the terminal)
-    STDERR (2) - Standard error (for error messages, also defaults to the terminal)
->
-    Save output to a file.
->>
-    Append output to a file.
-<
-    Read input from a file.
-2>
-    Redirect error messages.
-|
-    Send the output from one program as input to another program.
-    
-
     Tricks
 !! #call previous command
 sudo !!
