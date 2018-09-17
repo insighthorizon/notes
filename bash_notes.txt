@@ -47,7 +47,15 @@ Every program we run on the command line automatically has three data streams co
     Redirect error messages.
 |
     Send the output from one program as input to another program.
-    
+Bash accomodates piping and redirection by way of special files. Each process gets it's own set of files (one for STDIN, STDOUT and STDERR respectively) and they are linked when piping or redirection is invoked. Each process gets the following files:
+STDIN - /proc/<processID>/fd/0
+STDOUT - /proc/<processID>/fd/1
+STDERR - /proc/<processID>/fd/2
+To make life more convenient the system creates some shortcuts for us:
+STDIN - /dev/stdin or /proc/self/fd/0
+STDOUT - /dev/stdout or /proc/self/fd/1
+STDERR - /dev/stderr or /proc/self/fd/2
+(A few device files have a meaning that depends on the process that accesses it. For example, /dev/stdin, https://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files)
 
       Quotes
 Note:      
@@ -78,3 +86,6 @@ sed -n "$RANDOM{p}" /usr/share/dict/words
 Note: variable with string, curly braces emhasize that 'p' is separate string
 echo 1-"$RANDOM"
 
+
+	Asking user for input
+read varname # see help read	
