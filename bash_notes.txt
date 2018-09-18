@@ -89,3 +89,56 @@ echo 1-"$RANDOM"
 
 	Asking user for input
 read varname # see $help read	
+
+
+     Arithmetic
+let a=5+4
+let "a = 5 + 4"
+let a++
+expr 5 + 4 # prints the result
+a=$( expr 10 - 3 )
+Double parentheses (preferred method):
+a=$(( 4 + 5 ))
+(( b += 3 ))
+(( b++ ))
+
+
+       Length of the variable
+${#VARIABLE}       
+
+
+       Awk
+Awk is a good program to use if you need to work with data that is organised into records with fields (such as the sample data below). It allows you to filter the data and control how it is displayed.
+awk '{print "name: " $9, "size: " $5, "owner: " $3}' < file.txt # pick the columns 9, 5, 3
+
+
+    	    If statement   
+if [ <some test> ]
+then
+<commands>
+fi
+The square brackets ( [ ] ) in the if statement above are actually a reference to the command test.
+Test ($man test)
+Operator	Description
+! EXPRESSION	The EXPRESSION is false.
+-n STRING	The length of STRING is greater than zero.
+-z STRING	The lengh of STRING is zero (ie it is empty).
+STRING1 = STRING2	STRING1 is equal to STRING2
+STRING1 != STRING2	STRING1 is not equal to STRING2
+INTEGER1 -eq INTEGER2	INTEGER1 is numerically equal to INTEGER2
+INTEGER1 -gt INTEGER2	INTEGER1 is numerically greater than INTEGER2
+INTEGER1 -lt INTEGER2	INTEGER1 is numerically less than INTEGER2
+-d FILE	FILE exists and is a directory.
+-e FILE	FILE exists.
+-r FILE	FILE exists and the read permission is granted.
+-s FILE	FILE exists and it's size is greater than zero (ie. it is not empty).
+-w FILE	FILE exists and the write permission is granted.
+-x FILE	FILE exists and the execute permission is granted.
+
+Version with arithmetic expression (double parentheses instead []):
+if (( $1 > 100)); then
+    echo "Argument is bigger than 100"
+else
+    echo "Argument is smaller than 100"
+   fi
+
