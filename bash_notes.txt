@@ -141,4 +141,6 @@ if (( $1 > 100)); then
 else
     echo "Argument is smaller than 100"
    fi
+double-parentheses construct is also a mechanism for allowing C-style manipulation of variables in Bash
+(allows like (( a == 1 )) evaluations)
 
