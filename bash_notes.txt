@@ -88,4 +88,4 @@ echo 1-"$RANDOM"
 
 
 	Asking user for input
-read varname # see help read	
+read varname # see $help read	
