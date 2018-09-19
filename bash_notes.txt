@@ -52,7 +52,7 @@ STDIN - /proc/<processID>/fd/0
 STDOUT - /proc/<processID>/fd/1
 STDERR - /proc/<processID>/fd/2
 To make life more convenient the system creates some shortcuts for us:
-STDIN - /dev/stdin or /proc/self/fd/0
+STDIN - /dev/stdin or /proc/self/fd/0 - these files provide data depending on from which process they are acessed
 STDOUT - /dev/stdout or /proc/self/fd/1
 STDERR - /dev/stderr or /proc/self/fd/2
 (A few device files have a meaning that depends on the process that accesses it. For example, /dev/stdin, https://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files)
@@ -116,9 +116,24 @@ awk '{print "name: " $9, "size: " $5, "owner: " $3}' < file.txt # pick the colum
 if [ <some test> ]
 then
 <commands>
+elif [ <some test> ] 
+then
+<different commands>
+else
+<other commands>
 fi
+Example: (script that can process both agument or stdin)
+#!/bin/bash
+# else example
+if [ $# -eq 1 ]
+then
+nl $1
+else
+nl /dev/stdin
+fi
+
 The square brackets ( [ ] ) in the if statement above are actually a reference to the command test.
-Test ($man test)
+Test ($man test) - can test the conditions by just running the command test ($test 001 -eq 1; echo $?; # 0 is true)
 Operator	Description
 ! EXPRESSION	The EXPRESSION is false.
 -n STRING	The length of STRING is greater than zero.
@@ -135,6 +150,10 @@ INTEGER1 -lt INTEGER2	INTEGER1 is numerically less than INTEGER2
 -w FILE	FILE exists and the write permission is granted.
 -x FILE	FILE exists and the execute permission is granted.
 
+Boolean operators:
+if [ -r $1 ] && [ -s $1 ]
+if [ $USER == 'bob' ] || [ $USER == 'andy' ]
+
 Version with arithmetic expression (double parentheses instead []):
 if (( $1 > 100)); then
     echo "Argument is bigger than 100"
@@ -143,4 +162,15 @@ else
    fi
 double-parentheses construct is also a mechanism for allowing C-style manipulation of variables in Bash
 (allows like (( a == 1 )) evaluations)
+
+
+	Case statement
+case <variable> in
+<pattern 1>)
+<commands>
+;;
+<pattern 2>)
+<other commands>
+;;
+esac
 
