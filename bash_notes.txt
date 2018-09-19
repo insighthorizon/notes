@@ -165,6 +165,7 @@ double-parentheses construct is also a mechanism for allowing C-style manipulati
 
 
 	Case statement
+Choose a set of comands to execute depending on a string matching a particular pattern.	
 case <variable> in
 <pattern 1>)
 <commands>
@@ -172,5 +173,40 @@ case <variable> in
 <pattern 2>)
 <other commands>
 ;;
+esac
+Remember that the test for each case is a pattern. The * represents any number of any character. It is essentialy a catch all if for if none of the other cases match. It is not necessary but is often used.
+Example:
+case $1 in
+start)
+echo starting
+;;
+stop)
+echo stoping
+;;
+restart)
+echo restarting
+;;
+*)
+echo don\'t know
+;;
+esac
+More example:
+space_free=$( df -h | awk '{print $5}' | sort -n | tail -n 1 | sed 's/%//' )
+case $space_free in
+    [1-5]*)
+	echo Plenty of disk space available
+	;;
+    [6-7]*)
+	echo There could be  a problem in the near future
+	;;
+    8*)
+	echo Maybe we should look at clearing out old files
+	;;
+    9*)
+	echo We could have a serious problem on our hands soon
+	;;
+    *)
+	echo Something is not quite right here
+	;;
 esac
 
