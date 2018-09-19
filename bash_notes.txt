@@ -210,3 +210,24 @@ case $space_free in
 	;;
 esac
 
+
+		While loop
+while [ <some test> ]
+do
+<commands>
+done
+Example:
+counter=1
+while [ $counter -le 10 ]
+do
+echo $counter
+((counter++))
+done
+
+		Until loop
+until [ <some test> ]
+do
+<commands>
+done
+Example:
+
