@@ -15,6 +15,17 @@ Command:
 env # without argument lists environment variables
 
 
+      Exit status codes
+0 #the process exited succesfully
+1 # Catchall for general errors...
+
+
+      Wildcards
+* - represents zero or more characters
+? - represents a single character
+[] - represents a range of characters
+
+
 	Regular expressions
 . (dot) - a single character.
 ? - the preceding character matches 0 or 1 times only.
@@ -47,6 +58,11 @@ Every program we run on the command line automatically has three data streams co
     Redirect error messages.
 |
     Send the output from one program as input to another program.
+
+Redirecting STDERR
+ls -l video.mpg blah.foo 2> errors.txt
+ls -l video.mpg blah.foo > myoutput 2>&1 #Maybe we wish to save both normal output and error messages into a single file. This can be done by redirecting the STDERR stream to the STDOUT stream and redirecting STDOUT to a file. We redirect to a file first then redirect the error stream. We identify the redirection to a stream by placing an & in front of the stream number (otherwise it would redirect to a file called 1).
+
 Bash accomodates piping and redirection by way of special files. Each process gets it's own set of files (one for STDIN, STDOUT and STDERR respectively) and they are linked when piping or redirection is invoked. Each process gets the following files:
 STDIN - /proc/<processID>/fd/0
 STDOUT - /proc/<processID>/fd/1
@@ -229,5 +245,41 @@ until [ <some test> ]
 do
 <commands>
 done
+
+		For loop
+for var in <list>
+do
+<commands>
+done
+The for loop will take each item in the list (in order, one after the other), assign that item as the value of the variable var, execute the commands between do and done then go back to the top, grab the next item in the list and repeat over. The list is defined as a series of strings, separated by spaces.
 Example:
+# Make a php copy of any html files
+for value in $1/*.html
+do
+cp $value $1/$( basename -s .html $value ).php
+done
+
+		Break and Continue loop control
+break #statement tells bash to leave the loop straight away
+continue #statement tells bash to stop runnign through this iteration of the loop and begin the next iteration
+
+
+	 	Select statement
+select var in <list>
+do
+<commands>
+done
+When invoked it will take all the items in list (similar to other loops this is a space separated set of items) and present them on the screen with a number before each item. A prompt will be printed after this allowing the user to select a number. When they select a number and hit enter the corresponding item will be assigned to the variable var and the commands between do and done are run. Once finished a prompt will be displayed again so the user may select another option.
+Example:
+names='Kyle Cartman Stan Quit'
+PS3='Select character: ' #You may change the system variable PS3 to change the prompt that is displayed
+select name in $names
+do
+if [ $name == 'Quit' ]
+then
+break
+fi
+echo Hello $name
+done
+echo Bye
 

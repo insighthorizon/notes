@@ -31,6 +31,9 @@ cat sourcefile
 less sourcefile
 echo $SHELL
 
+	Set default editor
+sudo update-alternatives --config editor
+
 
 	Variables
 $ - placed before a variable name to refer to its value	
@@ -56,12 +59,18 @@ bg #starts running the process with job number [1] in the background
 sleep 5 & #& makes the command run in background
 fg
 kill %n #kill job with number n in the jobs list
-
+crontab #task scheduling
 
      	Accounts
 passwd
 
 	Wildcards in arguments of commands
+* - represents zero or more characters
+? - represents a single character
+[] - represents a range of characters
+
+
+     Wildcards
 * - represents zero or more characters
 ? - represents a single character
 [] - represents a range of characters
