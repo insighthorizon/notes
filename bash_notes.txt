@@ -264,12 +264,16 @@ break #statement tells bash to leave the loop straight away
 continue #statement tells bash to stop runnign through this iteration of the loop and begin the next iteration
 
 
-	 	Select statement
+	 	Select loop
 select var in <list>
 do
 <commands>
 done
 When invoked it will take all the items in list (similar to other loops this is a space separated set of items) and present them on the screen with a number before each item. A prompt will be printed after this allowing the user to select a number. When they select a number and hit enter the corresponding item will be assigned to the variable var and the commands between do and done are run. Once finished a prompt will be displayed again so the user may select another option.
+No error checking is done. If the user enters something other than a number or a number not corresponding to an item then var becomes null (empty)
+If the user hits enter without entering any data then the list of options will be displayed again.
+The loop will end when an EOF signal is entered or the break statement is issued.
+You may change the system variable PS3 to change the prompt that is displayed.
 Example:
 names='Kyle Cartman Stan Quit'
 PS3='Select character: ' #You may change the system variable PS3 to change the prompt that is displayed
