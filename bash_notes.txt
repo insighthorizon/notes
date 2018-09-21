@@ -13,6 +13,7 @@ $RANDOM - Returns a different random number each time is it referred to.
 $LINENO - Returns the current line number in the Bash script.	
 Command:
 env # without argument lists environment variables
+Command line arguments are good way of supplying data as they will be retained in the users history making it easy for them to rerun commands. Command line arguments are also convenient when the script is not run directly by the user.
 
 
       Exit status codes
@@ -43,7 +44,7 @@ $ - matches the end of the line.
 
 
     Piping and redirection
-Every program we run on the command line automatically has three data streams connected to it.
+Every program we run on the command line automatically has three data streams connected to it. Redirected from STDIN is good when your script is behaving like a filter and just modifying or reformatting data that is fed to it.
 
     STDIN (0) - Standard input (data fed into the program)
     STDOUT (1) - Standard output (data printed by the program, defaults to the terminal)
@@ -98,13 +99,15 @@ Command:
 echo "$var1$var2"
 Note: variable with variable
 Command:
-sed -n "$RANDOM{p}" /usr/share/dict/words
-Note: variable with string, curly braces emhasize that 'p' is separate string
+sed -n ""$RANDOM"p" /usr/share/dict/words
+Note: variable with string, "" emhasize that RANDOM is varable and not "RANDOMp"
 echo 1-"$RANDOM"
 
 
 	Asking user for input
 read varname # see $help read	
+Reading interactively is good when you don't know what data may be required until the script is already running.
+Passwords are also ideally asked for this way so they aren't kept as plain text in the users history.
 
 
      Arithmetic
@@ -286,4 +289,47 @@ fi
 echo Hello $name
 done
 echo Bye
+
+	Functions
+function_name () {
+<commands>
+}
+function function_name {
+<commands>
+}
+In other programming languages it is common to have arguments passed to the function listed inside the brackets (). In Bash they are there only for decoration and you never put anything inside them. $1 .. $9 hold values of arguments passed into the function (same as with arguments for a script)
+The function definition ( the actual function itself) must appear in the script before any calls to the function.
+Return value can be 0-255, 0 signifies success status, we can use return to set return status.
+print_something () {
+echo Hello $1
+return 5
+}
+print_something crap
+echo $?
+
+Example of getting data from the function (through cat, or echo):
+lines_in_file () {
+cat $1 | wc -l
+}
+num_lines=$( lines_in_file $1 )
+echo The file $1 has $num_lines lines in it.
+
+Exporting functions to child processes:
+export -f function_name
+
+
+       	  Variable scope
+By default a variable is global. This means that it is visible everywhere in the script. We may also create a variable as a local variable. When we create a local variable within a function, it is only visible within that function. To do that we use the keyword local in front of the variable the first time we set it's value.
+local var_name=<var_value>
+
+
+	Overriding Commands
+It is possible to name a function as the same name as a command you would normally use on the command line. This allows us to create a wrapper. eg. Maybe every time we call the command ls in our script, what we actually want is ls -lh.
+ls () {
+command ls -lh
+}
+When we have a function with the same name as a command we need to put the keyword command in front of the the name when we want the command as opposed to the function as the function normally takes precedence. (we dont want recursion)
+
+     	TPut (terminal output formating and more)
+tput is a command which allows you to control the cursor on the terminal and the format of content that is printed. It is quite a powerful and complex tool so I'll introduce some of the basics here but leave it up to you to do further research
 
