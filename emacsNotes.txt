@@ -17,3 +17,7 @@ C-x 1 #close all windows except the selected one
     Chage Font Size
 C-x C-+
 C-x C--
+
+    Change collors for term
+M-x customize-group RET term RET
+
