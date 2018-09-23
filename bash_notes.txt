@@ -42,6 +42,11 @@ Command line arguments are good way of supplying data as they will be retained i
 ^ - matches the beginning of the line.
 $ - matches the end of the line.
 
+    Sed expressions
+sed '/pattern/d' file.txt #remove pattern
+sed 's/pattern/replacement/g' input.txt #replace pattern
+sed -n "line nubmer"p intput.txt  #output line with given number
+
 
     Piping and redirection
 Every program we run on the command line automatically has three data streams connected to it. Redirected from STDIN is good when your script is behaving like a filter and just modifying or reformatting data that is fed to it.
@@ -129,7 +134,7 @@ ${#VARIABLE}
        Awk
 Awk is a good program to use if you need to work with data that is organised into records with fields (such as the sample data below). It allows you to filter the data and control how it is displayed.
 awk '{print "name: " $9, "size: " $5, "owner: " $3}' < file.txt # pick the columns 9, 5, 3
-
+awk -v pick=$COIN_TOSS -F[-] '{print $pick}' # variable usage inside awk expression
 
     	    If statement   
 if [ <some test> ]
