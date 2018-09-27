@@ -1,0 +1,21 @@
+	What git saves
+git commit #create snapshot of the current state of (local repository) and make it child of parrent commit (snapshot) on the branch
+#git saves only the difference between snapshots (delta)
+
+     Branches
+git branch newImage #creates pointer to a commit
+git checkout newImage # switches us to the chosen branch (default branch is master), so subsequent commits are on the given branch (contain the work of snapshot the branch points to also to keep the branch reference on all the child commits of this snapshot)
+# which branch we are on is signified by asterisk (*)
+# head is last commit of a branch
+git checkout -b [yourbranchname] # shortcut to make branch and switch to it by one command
+
+    Merging
+# Allows combining work from different branches together (for example combine a branch back in the master)
+# Merging creates a commit that thas two unique parents with intention to include all the work from both parrents and all their parrents
+git merge bugFix #merges the branch bugFix into master (if we were at the master branch with the asterisk (*)
+git checkout bugFix; git merge master # now bugFix  branch would be on the same commit with tha master branch
+
+
+    Rebasing
+# copying a set of commits and applying them somewher else
+# can be used to make a linear sequence of commits (instead of the branch
