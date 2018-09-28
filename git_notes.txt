@@ -18,4 +18,12 @@ git checkout bugFix; git merge master # now bugFix  branch would be on the same 
 
     Rebasing
 # copying a set of commits and applying them somewher else
-# can be used to make a linear sequence of commits (instead of the branch
+# can be used to make a linear sequence of commits (instead of the in parallel existing branches)
+# if we rebase branches it will look like the features developed in branches were developed in sequence instead of in parallel
+git rebase master # rebases checked branch onto the master branch
+# if we were at other branch, it will put the alle the subsequent commits of branch into the master
+example: (we have two branches - master and myBranch, each has own commits)
+git checkout myBranch
+git rebase master
+git checkout master
+git rebase myBranch
