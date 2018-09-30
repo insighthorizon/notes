@@ -1,4 +1,5 @@
 git log # use this fucking command
+git status # use this fucking command
 
 	What git saves
 git commit #create snapshot of the current state of (local repository) and make it child of parrent commit (snapshot) on the branch
@@ -19,11 +20,11 @@ git checkout bugFix; git merge master # now bugFix  branch would be on the same 
 
 
     Rebasing
-# copying a set of commits and applying them somewher else
+# copying a set of commits and applying them somewhere else
 # can be used to make a linear sequence of commits (instead of the in parallel existing branches)
 # if we rebase branches it will look like the features developed in branches were developed in sequence instead of in parallel
 git rebase master # rebases checked branch onto the master branch
-# if we were at other branch, it will put the alle the subsequent commits of branch into the master
+# if we were at other branch, it will put all the subsequent commits of branch into the master
 example: (we have two branches - master and myBranch, each has own commits)
 git checkout myBranch
 git rebase master
@@ -33,6 +34,7 @@ git rebase myBranch
     HEAD pointer (*)
 # HEAD is symbolic name for the currently checket out commit    
 # HEAD can be attached to a branch or to a commit
+# If HEAD is not attached to any branch (master or anything else), then it is -detached- ant it is pointing directly to a commit, in this state we cant give new commits (commits work only on ranches)
 git checkout "commit hash" # HEAD will point to that commit
 git checkout master # HEAD will attach to master branch (its last commit)
 
@@ -57,4 +59,22 @@ git reset HEAD~1
 git revert HEAD # we specifity which one commit to revert, not where to return to
 
     Cherry-pick
-    
+# git cherry-pick <Commit1> <Commit2> <...>
+# Given one or more existing commits, apply the change each one introduces bellow the current location (HEAD), recording a new commit for each. (as long as that commit isn't an ancestor of HEAD)
+# must not have any uncommited changes in repository
+
+    Interactive rebase
+git rebase -i <commit>
+# pick which commits to include and in wnich order
+# squash allows to combine commits (multiple commits into one)
+
+  	 Editing a commit
+commit --amend # replace the tip of the current branch by creating new commit
+
+       Git tags
+# permanent mark on certain commits (as milestones)      
+git tag <tagname> <commithash>
+# we can checkout a tag, but HEAD will detach
+git describe # gives descibtion where you (HEAD) are relative to the closest ancestor tag
+git describe <ref> # tells location relative to <ref> (commit or branch)
+
