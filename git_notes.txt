@@ -1,3 +1,5 @@
+git log # use this fucking command
+
 	What git saves
 git commit #create snapshot of the current state of (local repository) and make it child of parrent commit (snapshot) on the branch
 #git saves only the difference between snapshots (delta)
@@ -34,6 +36,25 @@ git rebase myBranch
 git checkout "commit hash" # HEAD will point to that commit
 git checkout master # HEAD will attach to master branch (its last commit)
 
-    Relative commits (^, ~<num>, ...)
-# moving upwards one commit at a time with ^
-# 
+    Relative refs (^, ~<num>, ...)
+    ^ - caret
+    ~ - tilde    
+# moving upwards to the first parent of the specified commit with ^
+git checkout master^
+git checkout HEAD^
+git checkout master^^ # grandparrent
+# moving upwards a number of times with ~<num>
+git checkout myBranch~3
+# moving branches around
+git branch -f master HEAD~3 # by force moves the master branch to three parents behind HEAD
+
+    Reversing changes in Git
+# git reset reverts changes by moving a branch reference backwards in time to an older commit, as if the commit had never been made, in this sense it rewrites the local history
+# it works for local branches on own machine only, it doesn't work for remote branches
+git reset HEAD~1
+# git revert reverses changes of given commits and shares those with others (is able to revert changes on remote)
+# it creates new commit thate introduces the changes that actualy revert the commit, then these changes can be pushed out to remote
+git revert HEAD # we specifity which one commit to revert, not where to return to
+
+    Cherry-pick
+    
