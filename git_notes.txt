@@ -5,7 +5,7 @@ git commit #create snapshot of the current state of (local repository) and make 
      Branches
 git branch newImage #creates pointer to a commit
 git checkout newImage # switches us to the chosen branch (default branch is master), so subsequent commits are on the given branch (contain the work of snapshot the branch points to also to keep the branch reference on all the child commits of this snapshot)
-# which branch we are on is signified by asterisk (*)
+# which branch we are on is signified by asterisk (*) (HEAD pointer)
 # head is last commit of a branch
 git checkout -b [yourbranchname] # shortcut to make branch and switch to it by one command
 
@@ -27,3 +27,13 @@ git checkout myBranch
 git rebase master
 git checkout master
 git rebase myBranch
+
+    HEAD pointer (*)
+# HEAD is symbolic name for the currently checket out commit    
+# HEAD can be attached to a branch or to a commit
+git checkout "commit hash" # HEAD will point to that commit
+git checkout master # HEAD will attach to master branch (its last commit)
+
+    Relative commits (^, ~<num>, ...)
+# moving upwards one commit at a time with ^
+# 
