@@ -88,12 +88,33 @@ git tag <tagname> <commithash>
 git describe # gives descibtion where you (HEAD) are relative to the closest ancestor tag
 git describe <ref> # tells location relative to <ref> (commit or branch)
 
-    Push & Pull
+    Fetch and Pull
 git clone <origin URL>
 git remote # tells reference names of the remotes
 git remote show origin # more info, including URL
+# Remote branch (like origin/master) is on local repository and reflects the state of the remote repositories since you last talked to those remotes, only way to talk to remote repository is git fetch
 # Remote branches have the special property that when you check them out, you are put into detached HEAD mode. Git does this on purpose because you can't work on these branches directly; you have to work elsewhere and then share your work with the remote (after which your remote branches will be updated).
 remote branches also have a (required) naming convention -- they are displayed in the format of:
 <remote name>/<branch name>
-common that git actually sets up your remote to be named origin when you git clone a repository
+# common that git actually sets up your remote to be named origin when you git clone a repository
+# connection between master and origin/master is explained simply by the "remote tracking" property of branches. The master branch is set to track origin/master -- this means there is an implied merge target and implied push destination for the master branch. When you clone a repository with git, this property is actually set for you automatically. During a clone, git creates a remote branch for every branch on the remote (aka branches like o/master). It then creates a local branch that tracks the currently active branch on the remote, which is master in most cases.
+# git fetch downloads the commits that the remote has but are missing from our local repository, and updates where our remote branches point (for instance, origin/master)
+# git fetch usually talks to the remote repository through the Internet (via a protocol like http:// or git://).
+# git fetch, however, does not change anything about your local state. It will not update your master branch or change anything about how your file system looks right now.It may download all the necessary data to do that, but it does not actually change any of your local files, we need to merge the updated remote branches into local branches after that, we can do it manualy
+git pull # a shorthand for a fetch and a merge (all branches with origin branches)
+git pull --rebase # a shorthand for a fetch and a rebase
 
+    Push
+# uploading local changes to a specified remote and updating that remote to incorporate new commits
+example:
+git push 
+-error # can't push,  need to pull first, because origin diverged
+git pull
+next:
+git pull --rebase; git push
+-----
+git checkout -b totallyNotMaster origin/master # Creates a new branch named totallyNotMaster and sets it to track origin/master,therefore remote master can track totally different branch name, and i don't like this feature
+git branch -u origin/master foo # another way
+git push <remote> <place> # git push origin master - Go to the branch named "master" in my repository, grab all the commits, and then go to the branch "master" on the remote named "origin." Place whatever commits are missing on that branch and then tell me when you're done. So git ignores where are checked out while performing this command.
+git push <remote(origin)> <source>:<destination> #for specifying the source (any branch, reference like HEAD^...) and destination branch, git would resolve reference into location and upload whatever commits that weren't present yet on the remote, and then updated destination, if <destination> doesnt exist, then git creates that branch on remote for us
+git fetch <remote> <source>:<destination> # just like git push in reverse

@@ -1,3 +1,5 @@
+grep -nr "searched string" # searches in files in current directory
+history | grep "searched command"
 	Special Variables in particular bash script which is running
 Note:	
 $0 - The name of the Bash script.
