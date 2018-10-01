@@ -118,3 +118,15 @@ git branch -u origin/master foo # another way
 git push <remote> <place> # git push origin master - Go to the branch named "master" in my repository, grab all the commits, and then go to the branch "master" on the remote named "origin." Place whatever commits are missing on that branch and then tell me when you're done. So git ignores where are checked out while performing this command.
 git push <remote(origin)> <source>:<destination> #for specifying the source (any branch, reference like HEAD^...) and destination branch, git would resolve reference into location and upload whatever commits that weren't present yet on the remote, and then updated destination, if <destination> doesnt exist, then git creates that branch on remote for us
 git fetch <remote> <source>:<destination> # just like git push in reverse
+git push origin :foo # pushing nothing to remote foo branch deletes the foo branch
+git fetch origin :bar # this makes a new local branch bar
+git pull <remote> <source>:<destination>
+git pull <remote <place>
+
+git pull origin foo is equal to: 
+git fetch origin foo; git merge origin/foo
+
+git pull origin bar~1:bugFix is equal to:
+git fetch origin bar~1:bugFix; git merge bugFix
+
+in pull we merge in whatever was just fetched into checked out branch or the <destination>
