@@ -340,3 +340,8 @@ When we have a function with the same name as a command we need to put the keywo
      	TPut (terminal output formating and more)
 tput is a command which allows you to control the cursor on the terminal and the format of content that is printed. It is quite a powerful and complex tool so I'll introduce some of the basics here but leave it up to you to do further research
 
+     High Quality Random number generation
+man 4 random
+/dev/urandom # cryptographycaly strong pseudorandom number generation
+/dev/random # gathers entropy from device drivers, can block on low entropy (even stronger than urandom)
+echo "$(od -An -N4 -tu4 /dev/urandom) % 15 + 1" | bc      
