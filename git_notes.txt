@@ -152,4 +152,6 @@ git fetch origin foo; git merge origin/foo
 git pull origin bar~1:bugFix is equal to:
 git fetch origin bar~1:bugFix; git merge bugFix
 
-in pull we merge in whatever was just fetched into checked out branch or the <destination>
+    Tracking and untracking files in Git repo (gitignore)
+https://www.atlassian.com/git/tutorials/saving-changes/gitignore
+
