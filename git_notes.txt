@@ -1,4 +1,5 @@
 git log # use this fucking command
+git show-branches # use this fucking command
 git status # use this fucking command
 
 git config --global user.name "user name"
@@ -61,6 +62,8 @@ git checkout newImage # switches us to the chosen branch (default branch is mast
 git checkout -b <yourbranchname> # shortcut to make branch and switch to it by one command
 git checkout -b <branchname> <where to branch> # even better shortcut
 git branch <branchname> <where to branch> # without checkout
+git branch -d <branchname> # to delete a merged branch (commits of this branch are also contained in other branch)
+git branch -D <branchname> # to delete unmerged branch (deletes the commits)
 
     Merging
 # Allows combining work from different branches together (for example combine a branch back in the master)
@@ -87,6 +90,7 @@ git rebase -i <where to rebase the checked out branch>
 git rebase -i <where to rebase> <what to rebase>
 # pick which commits to include and in wnich order
 # squash allows to combine commits (multiple commits into one)
+# in git rebase -i is to possible chose no commits to be integrated by writing "noop" -this is way to return branch to an older commit, or even delete the whole set of commits if this is the only branch that contains the commits, it is possible to rebase master branch onto older commit with noop and delete arbitrary number of newest subsequent commits this way
 
     Cherry-pick
 # git cherry-pick <Commit1> <Commit2> <...>
@@ -146,6 +150,9 @@ git fetch origin :bar # this makes a new local branch bar
 git pull <remote> <source>:<destination>
 git pull <remote_name> <local_branch_name>
 
+git push origin :<destination> # removes the remote branch
+git push origin --delete <remote_branch> # same
+
 git pull origin foo is equal to: 
 git fetch origin foo; git merge origin/foo
 
@@ -154,4 +161,3 @@ git fetch origin bar~1:bugFix; git merge bugFix
 
     Tracking and untracking files in Git repo (gitignore)
 https://www.atlassian.com/git/tutorials/saving-changes/gitignore
-
