@@ -25,11 +25,15 @@ touch
 chmod # file permissions
 find ./ -type -name "*.log"
 
+     Downloading file from URL
+wget     
+
 
 	Text
 cat sourcefile
 less sourcefile
 echo $SHELL
+
 
 	Set default editor
 sudo update-alternatives --config editor

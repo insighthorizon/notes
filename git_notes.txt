@@ -1,7 +1,30 @@
 git log # use this fucking command
 git status # use this fucking command
 
+git config --global user.name "user name"
+git config --global ser.email "user email"
+
+    Initializing a new repository
+git init # one time command used inside the repository to be versioned, will create a new .git subdirectory in your current working directory, will also create a new master branch
+git init <project directory> # creates the new project directory for us
+# does not pair the repository with any remote to push changes to
+# we can pair the repo with remote repo afterwards (creating clean repo on bitbucket and using its URL)
+# to host your own remote repo, you'll need to set up a "Bare Repository." Both git init and git clone accept a --bare argument. The most common use case for bare repo is to create a remote central Git repository
+
+  Adding a remote repository
+# will map remote repository at <remote_repo_url> to a ref in your local repo under <remote_name>      
+git remote add <remote_name> <remote_repo_url> # example: git remote add origin https://github.com/insighthorizon/crap.git
+
+    Cloning and existing repository
+git clone <repo url> # target an existing repository and create a clone, automatically configures repo for remote collaboration (remote pointed to the <repo url> - the repo we clone from), we can then git push changes to that remote repository
+
+    Git add and git commit
+git add
+git commit
+
 	What git saves
+# Unlike SVN, Git makes no distinction between the working copies and the central repository—they're all full-fledged Git repositories
+# by simply designating one Git repo as the “central” repository, it’s possible to replicate a centralized workflow using Git. This is accomplished through conventions rather than being hardwired into the VCS itself
 git commit #create snapshot of the current state of (local repository) and make it child of parrent commit (snapshot) on the branch
 #git saves only the difference between snapshots (delta)
 
@@ -115,13 +138,13 @@ git pull --rebase; git push
 -----
 git checkout -b totallyNotMaster origin/master # Creates a new branch named totallyNotMaster and sets it to track origin/master,therefore remote master can track totally different branch name, and i don't like this feature
 git branch -u origin/master foo # another way
-git push <remote> <place> # git push origin master - Go to the branch named "master" in my repository, grab all the commits, and then go to the branch "master" on the remote named "origin." Place whatever commits are missing on that branch and then tell me when you're done. So git ignores where are checked out while performing this command.
+git push <remote_name> <local_branch_name> # git push origin master - Go to the branch named "master" in my repository, grab all the commits, and then go to the branch "master" on the remote named "origin." Place whatever commits are missing on that branch and then tell me when you're done. So git ignores where are checked out while performing this command.
 git push <remote(origin)> <source>:<destination> #for specifying the source (any branch, reference like HEAD^...) and destination branch, git would resolve reference into location and upload whatever commits that weren't present yet on the remote, and then updated destination, if <destination> doesnt exist, then git creates that branch on remote for us
 git fetch <remote> <source>:<destination> # just like git push in reverse
 git push origin :foo # pushing nothing to remote foo branch deletes the foo branch
 git fetch origin :bar # this makes a new local branch bar
 git pull <remote> <source>:<destination>
-git pull <remote <place>
+git pull <remote_name> <local_branch_name>
 
 git pull origin foo is equal to: 
 git fetch origin foo; git merge origin/foo
