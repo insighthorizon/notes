@@ -1,6 +1,8 @@
 git log # use this fucking command
 git show-branches # use this fucking command
 git status # use this fucking command
+git diff # use this fucking command
+git diff <commit1_hash> <commit2_hash> # shows changes from commit1 to commit2
 
 git config --global user.name "user name"
 git config --global ser.email "user email"
