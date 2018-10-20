@@ -1,6 +1,7 @@
 #Use Emcas GUI if you can!
+#<DEL> is backspace
 
-    Shell
+    Shell usage
 M-x ansi-term # run shell in emacs GUI
 
     Buffer management
@@ -11,13 +12,65 @@ C-x left/right arrow #jump between opened buffers
     Window management
 C-x 2 #split selected window to two, one above other
 C-x 3 #split selected window to two, side by side
-C-x o #jump between windows
+C-x o #jump between split windows
 C-x 1 #close all windows except the selected one
+C-z #jump to process (program or window where user was before emacs, this will not kill emacs, if emacs was opened from terminal, it will put emacs to background, so it can be continued with terminal command: fg)
 
-    Chage Font Size
-C-x C-+
-C-x C--
+    Chage Displayed Font Size
+C-+
+C--
 
     Change collors for term
 M-x customize-group RET term RET
 
+    Files
+C-x f #open a file
+C-x s #save a file
+
+    Corsor control
+C-n #next line
+C-p #prev line
+C-f #next char
+M-f #next word
+C-b #back by one char
+M-b #back by one word
+C-a #beggining of line
+M-a #move back to beggining of the sentence
+C-e #end of line
+M-e #move forward to end of the sentence
+M-< #beggining of file
+M-> #end of file
+C-<space> #place cursor for text select
+
+
+	  View control
+C-l #vertical center to rusor position
+C-v #next by one screen
+M-v #back by one screen
+
+    Deleting, copying and pasting
+M-w #put selected into kill ring without killing it
+C-w #kills selected and puts it into kill ring
+C-k #kills the line and puts it into kil ring
+C-u 0 C-k #kills to beggining of the line (same can do M-0 C-k) and puts it to kill ring
+<DEL> #deletes the selected text without adding it to the kill ring
+C-y #yanks the last string from the kill ring (repeatedly using this command still yanks the same last string from kill ring)
+M-y #if last command was a yank, it will change the yanked text to older string from kill ring (repeating this command changes the yanked text to older and older string from kill ring)
+
+    Searching strings
+C-s "string" #repeat pressing C-s to jup between fitting strings
+
+    Replacing strings
+M-x replace-string <RET> "replaced" <RET> "replacement" <RET>
+
+    Cancel ongoing command
+C-g
+
+	Tags
+M-. #if the cursor is placed on name of function or variable, it will look into tag file and if the definition is there, emacs will subsequently jump to the definition with the cursor (if opening of other file is needed in order to do that, emacs will do it)	
+
+    Undoing changes
+C-x u #unfortunately undoes even the undos, so if you break the undo chain, it will get annoying 
+
+    Do command multiple times
+C-u "the macs command" #for example C-u 3 C-n jumps 3 lines forward    
