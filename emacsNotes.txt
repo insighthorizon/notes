@@ -27,7 +27,7 @@ M-x customize-group RET term RET
 C-x f #open a file
 C-x s #save a file
 
-    Corsor control
+    Cursor control
 C-n #next line
 C-p #prev line
 C-f #next char
