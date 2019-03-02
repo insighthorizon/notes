@@ -5,6 +5,7 @@
 M-x ansi-term # run shell in emacs GUI
 
     Buffer management
+C-x C-v RET #reload buffer    
 C-x k #kill buffer
 C-x C-f #find or create file and open it in new buffer
 C-x left/right arrow #jump between opened buffers
