@@ -51,8 +51,8 @@ M-v #back by one screen
 
     Deleting, copying and pasting
 M-w #put selected into kill ring without killing it
-C-w #kills selected and puts it into kill ring
-C-k #kills the line and puts it into kil ring
+C-w #kills back to the beggining of line / kills selected and puts it into kill ring
+C-k #kills forward to the end of line and puts it into kil ring
 C-u 0 C-k #kills to beggining of the line (same can do M-0 C-k) and puts it to kill ring
 <DEL> #deletes the selected text without adding it to the kill ring
 C-y #yanks the last string from the kill ring (repeatedly using this command still yanks the same last string from kill ring)
