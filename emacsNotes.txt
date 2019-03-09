@@ -75,3 +75,7 @@ C-x u #unfortunately undoes even the undos, so if you break the undo chain, it w
 
     Do command multiple times
 C-u "the macs command" #for example C-u 3 C-n jumps 3 lines forward    
+
+    Source code management
+M-x comment-region
+M-x uncomment-region    
