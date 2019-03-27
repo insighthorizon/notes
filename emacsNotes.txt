@@ -15,7 +15,11 @@ C-x b buffername #switch to the buffer by the name (C-x b *scratch*)
 C-x 2 #split selected window to two, one above other
 C-x 3 #split selected window to two, side by side
 C-x o #jump between split windows
-C-x 1 #close all windows except the selected one
+C-x ^ #enlarge the current window vertically
+C-x } #enlarge the current window horizontally
+C-x { #shrink the current window horizontally
+C-x 1 #close all windows except the currently selected
+C-x 0 #close only the currently selected window
 C-z #jump to process (program or window where user was before emacs, this will not kill emacs, if emacs was opened from terminal, it will put emacs to background, so it can be continued with terminal command: fg)
 
     Chage Displayed Font Size
