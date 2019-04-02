@@ -84,3 +84,7 @@ C-u "the macs command" #for example C-u 3 C-n jumps 3 lines forward
     Source code management
 M-x comment-region
 M-x uncomment-region    
+
+    Special character entry
+M-x insert-char # emacs then asks for unicode character name like 'OPEN CENTRE TEARDROP-SPOKED ASTERISK' or hex code
+
