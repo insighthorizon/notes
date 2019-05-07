@@ -78,8 +78,11 @@ M-. #if the cursor is placed on name of function or variable, it will look into 
     Undoing changes
 C-x u #unfortunately undoes even the undos, so if you break the undo chain, it will get annoying 
 
-    Do command multiple times
-C-u "the macs command" #for example C-u 3 C-n jumps 3 lines forward    
+    Emacs command prefix
+C-u
+Double prefix: C-u C-u
+Do command multiple times
+C-u 'number' 'some emacs command' #for example C-u 3 C-n jumps 3 lines forward    
 
     Source code management
 M-x comment-region
