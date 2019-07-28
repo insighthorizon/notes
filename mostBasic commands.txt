@@ -26,7 +26,8 @@ chmod # file permissions
 find ./ -type -name "*.log"
 
      Downloading file from URL
-wget     
+wget
+wget -r -np -l 1 -A pdf http://www.cs.cmu.edu/~15150/previous-semesters/2012-spring/lect.html
 
 
 	Text
