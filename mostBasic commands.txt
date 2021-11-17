@@ -28,7 +28,11 @@ find ./ -type -name "*.log"
      Downloading file from URL
 wget
 wget -r -np -l 1 -A pdf https://www.cs.cmu.edu/~fp/courses/15312-f04/index.html
+
+Downloading a whole web page
 wget --mirror --convert-links --adjust-extension --page-requisites --no-parent http://example.org
+When parents are needed:
+wget --mirror --convert-links --adjust-extension --page-requisites -I courses/cs3110 -X "*" https://www.cs.cornell.edu/courses/cs3110/2017sp/index.php
 
 	Text
 cat sourcefile
